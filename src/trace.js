@@ -7,7 +7,10 @@ exports.createTrace = (htmlElem) => {
 function traceHtmlNode(node, startTimestamp, parentContext) {
   const tracer = trace.getTracer("default");
   const spanOptions = {
-    attributes: node.attributes,
+    attributes: {
+      ...node.attributes,
+      size: node.estimatedSize,
+    },
     startTime: startTimestamp,
   };
   const span = tracer.startSpan(node.tagName, spanOptions, parentContext);
