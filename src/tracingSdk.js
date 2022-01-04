@@ -22,6 +22,7 @@ exports.initTracing = (apiKey, dataset) => {
   });
 
   sdk = new NodeSDK({
+    autoDetectResources: false,
     resource: new Resource({
       [SemanticResourceAttributes.SERVICE_NAME]: "html-dom-trace",
     }),
