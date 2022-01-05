@@ -23,7 +23,7 @@ sade("html-dom-trace <url>", true)
 
       const response = await axios.get(url);
       const htmlElem = parseHtml(response.data);
-      createTrace(htmlElem);
+      createTrace(htmlElem, url);
 
       await shutdownTracing();
     } catch (err) {
