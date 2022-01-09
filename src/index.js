@@ -18,6 +18,10 @@ sade("html-dom-trace <url>", true)
   .option("--hc-key", "HoneyComb API Key")
   .option("--hc-dataset", "HoneyComb Dataset name", "html-dom-trace")
   .action(async (url, opts) => {
+    if (!opts["hc-key"]) {
+      console.error("missing required param: --hc-key");
+      process.exit(1);
+    }
     try {
       await initTracing(opts["hc-key"], opts["hc-dataset"]);
 
